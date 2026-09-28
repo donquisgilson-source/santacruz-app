@@ -7,13 +7,15 @@ from matriz import TABLA_LITROS
 
 app = FastAPI(title="Backend Santa Cruz")
 
-# Intentamos cargar las credenciales desde el archivo local oculto (para tu PC)
-# Si no existe (cuando suba a Render), las leerá de la nube de forma segura
 try:
     from config_local import SUPABASE_URL, SUPABASE_KEY
 except ImportError:
     SUPABASE_URL = os.getenv("SUPABASE_URL")
     SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+# --- DETECTOR DE ERRORES DE RENDER ---
+if not SUPABASE_URL or not SUPABASE_KEY:
+    raise ValueError("🚨 ERROR CRÍTICO: No se encontraron SUPABASE_URL o SUPABASE_KEY en Render. Revisa tus Environment Variables.")
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
