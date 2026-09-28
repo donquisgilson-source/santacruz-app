@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Descargar el código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -32,7 +32,7 @@ jobs:
         run: flet build apk --project "Santa Cruz Est" --org "com.estacion.santacruz" --icon assets/icono_gas.png
 
       - name: Subir el APK final
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: SantaCruz-App
           path: build/apk/*.apk
