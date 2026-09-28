@@ -3,7 +3,7 @@ import requests
 import time
 import threading
 
-URL_SERVER = "http://127.0.0.1:8000"
+URL_SERVER = "https://santacruz-backend-iej3.onrender.com"
 
 def modulo_login(page: ft.Page, on_login_success):
     estado_login = {"es_primer_inicio": False, "usuario_pendiente": ""}

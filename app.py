@@ -13,7 +13,7 @@ def main(page: ft.Page):
     page.window_resizable = False
     page.padding = 0 
 
-    URL_SERVER = "http://127.0.0.1:8000"
+    URL_SERVER = "https://santacruz-backend-iej3.onrender.com"
     datos_historial = []; datos_consumos = []; datos_estado_actual = {}
 
     # --- 2. LÓGICA INTERNA ---
