@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pydantic
+supabase
+requests
+flet==0.25.2

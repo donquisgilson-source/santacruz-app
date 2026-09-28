@@ -1,0 +1,38 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instalar librerías
+        run: |
+          pip install -r requirements.txt
+
+      - name: Configurar Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.3'
+          channel: 'stable'
+
+      - name: Compilar APK con Flet
+        run: flet build apk --project "Santa Cruz Est" --org "com.estacion.santacruz" --icon assets/icono_gas.png
+
+      - name: Subir el APK final
+        uses: actions/upload-artifact@v3
+        with:
+          name: SantaCruz-App
+          path: build/apk/*.apk

@@ -1,0 +1,6 @@
+config_local.py
+__pycache__/
+.env
+build/
+dist/
+*.apk
